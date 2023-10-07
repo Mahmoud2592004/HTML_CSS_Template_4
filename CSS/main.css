@@ -120,8 +120,12 @@ a {
 }
 
 @media (max-width: 767px) {
+    .sidebar {
+        padding: 10px;
+    }
+
     .sidebar > a h3 {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .sidebar ul a {
@@ -172,6 +176,20 @@ header form input {
 
 header form input:focus {
     width: 200px;
+}
+
+@media (max-width: 767px) {
+    header form input {
+        width: 120px;
+    }
+
+    header form input:focus {
+        width: 130px;
+    }
+
+    header form input::placeholder {
+        font-size: 12px;
+    }
 }
 
 header form input::placeholder {
@@ -693,57 +711,49 @@ header .icons img {
 }
 /* End Upload Widget */
 /* Start Project Widget */
-.wrapper .project .box {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.wrapper .project .shape {
-    position: relative;
-    border: 2px solid var(--blue-color);
-    width: 27px;
-    height: 27px;
-    margin-right: 20px;
-}
-
-.wrapper .project .box:not(:last-of-type) .shape::before {
+.last-project ul::before {
     content: "";
     position: absolute;
-    border-radius: 50%;
-    width: 90%;
-    height: 90%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 11px;
+    width: 2px;
+    height: 100%;
     background-color: var(--blue-color);
 }
 
-.wrapper .project .box:nth-last-of-type(2) .shape::before {
-    animation: fading 2s linear infinite;
+.last-project ul li {
+    margin-top: 25px;
 }
 
-.wrapper .project .box:not(:last-of-type) .shape::after {
+@media (max-width: 767px) {
+.last-project ul li {
+    font-size: 13px;
+    }
+}
+
+.last-project ul li::before {
     content: "";
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    bottom: -32px;
-    width: 2px;
-    height: 32px;
-    background-color: var(--blue-color, --blue-alt-color);
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid white;
+    outline: 2px solid var(--blue-color);
+    margin-right: 15px;
+    z-index: 1;
 }
-
-.wrapper .project .box p {
-    margin: auto 0;
+.last-project ul li.done::before {
+    background-color: var(--blue-color);
 }
-
-.wrapper .project img {
+.last-project ul li.current::before {
+    animation: fading 1.5s infinite linear;
+}
+.last-project .launch-icon {
     position: absolute;
-    width: 150px;
-    bottom: 20px;
-    right: 10px;
-    opacity: 0.2;
+    width: 160px;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
 }
 /* End Project Widget */
 /* Start Reminder Widget */
@@ -778,6 +788,12 @@ header .icons img {
     font-weight: bold;
     font-size: 15px;
 }
+
+@media (max-width: 767px) {
+    .wrapper .reminder .box .text p {
+        font-size: 13px;
+        }
+    }
 
 .wrapper .reminder .box .text span {
     font-size: 14px;
@@ -1259,6 +1275,11 @@ header .icons img {
 }
 
 @media (max-width: 767px) {
+    .profile {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
     .profile .toggle-switch {
         margin: auto;
     }
@@ -1354,6 +1375,12 @@ header .icons img {
     }
 }
 
+@media (max-width: 767px) {
+    .profile .data {
+        grid-template-columns: 1fr;
+    }
+}
+
 .profile .skills {
     grid-column: 1 / 2;
 }
@@ -1377,6 +1404,7 @@ header .icons img {
     .profile .skills .box span {
         display: inline-block;
         margin-bottom: 5px;
+        font-size: 14px;
     }
 }
 /* End skills */
@@ -1434,6 +1462,12 @@ header .icons img {
 .projects {
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     column-gap: 20px;
+}
+
+@media (max-width: 767px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
 }
 
 .projects .head {
@@ -1592,6 +1626,12 @@ header .icons img {
     grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
 }
 
+@media (max-width: 767px) {
+    .friends-page {
+        grid-template-columns: 1fr;
+    }
+}
+
 .friends-page .head {
     border-bottom: 1px solid #eee;
 }
@@ -1659,6 +1699,12 @@ header .icons img {
 
 .friends-page .foot {
     padding: 10px 0 0;
+}
+
+@media (max-width: 767px) {
+    .friends-page .foot {
+        flex-direction: column;
+    }
 }
 
 .friends-page .foot > div a {
@@ -1944,11 +1990,11 @@ header .icons img {
 /* Start Animation */
 @keyframes fading {
     0% ,100% {
-        opacity: 1;
+        background-color: white;
     }
 
     50% {
-        opacity: 0;
+        background-color: var(--blue-color);
     }
 }
 
